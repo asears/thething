@@ -9,7 +9,8 @@ where running black or ruff may add some steps.  No more local tooling!
 
 ## Status
 
-<img alt="badge" src="https://github.com/OWNER/REPOSITORY/actions/workflows/test-ci/badge.svg"/>
+[![test-ci main](https://github.com/asears/thething/actions/workflows/test-ci.yml/badge.svg?branch=main)](https://github.com/asears/thething/actions/workflows/test-ci.yml)
+[![test-ci PR](https://github.com/asears/thething/actions/workflows/test-ci.yml/badge.svg)](https://github.com/asears/thething/actions/workflows/test-ci.yml)
 
 ## Inspiration
 
