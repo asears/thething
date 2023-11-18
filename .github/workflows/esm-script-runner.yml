@@ -1,0 +1,13 @@
+on: workflow_dispatch
+
+jobs:
+  print-stuff:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const { default: printStuff } = await import('${{ github.workspace }}/.github/scripts/print-stuff.js')
+
+            await printStuff()

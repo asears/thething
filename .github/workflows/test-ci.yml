@@ -48,6 +48,9 @@ jobs:
         # TODO(AS): if tests succeed and ruff failed, format and fix and run tests again
         # - uses: actions/github-script@v7
         #   with:
+        #     retries: 0
+        #     result-encoding: string
+        #     retry-exempt-status-codes: 400,401,403,404,422
         #     script: |
         #       if [ "${{ steps.check_changes.outputs.changed }}" == "true" ]; then
         #         github.rest.actions.createWorkflowDispatch({
@@ -62,3 +65,8 @@ jobs:
         #   continue-on-error: false
         #   run: |
         #       pytest .
+        # Debugging
+        - name: View context attributes
+          uses: actions/github-script@v7
+          with:
+            script: console.log(context)

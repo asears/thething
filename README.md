@@ -76,6 +76,8 @@ https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/
 
 https://github.com/features/actions
 
+https://github.com/actions/github-script
+
 ## GitHub Bots
 
 https://github.com/marketplace/actions/github-project-bot
