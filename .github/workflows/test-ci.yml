@@ -46,7 +46,7 @@ jobs:
               pytest .
 
         # TODO(AS): if tests succeed and ruff failed, format and fix and run tests again
-        # - uses: actions/github-script@v6
+        # - uses: actions/github-script@v7
         #   with:
         #     script: |
         #       if [ "${{ steps.check_changes.outputs.changed }}" == "true" ]; then

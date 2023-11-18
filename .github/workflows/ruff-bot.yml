@@ -64,8 +64,8 @@ jobs:
               git push
             fi
 
-        # # Comment that the PR was fixed with ruff
-        # - uses: actions/github-script@v6
+        # # TODO(AS): Comment that the PR was fixed with ruff, only in a pr.
+        # - uses: actions/github-script@v7
         #   with:
         #     script: |
         #       if [ "${{ steps.check_changes.outputs.changed }}" == "true" ]; then
