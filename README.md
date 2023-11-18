@@ -9,8 +9,16 @@ where running black or ruff may add some steps.  No more local tooling!
 
 ## Status
 
+### Main
 [![test-ci main](https://github.com/asears/thething/actions/workflows/test-ci.yml/badge.svg?branch=main)](https://github.com/asears/thething/actions/workflows/test-ci.yml)
-[![test-ci PR](https://github.com/asears/thething/actions/workflows/test-ci.yml/badge.svg)](https://github.com/asears/thething/actions/workflows/test-ci.yml)
+
+### Workflow Dispatch
+
+[![test-ci PR](https://github.com/asears/thething/actions/workflows/test-ci.yml/badge.svg?event=workflow_dispatch)](https://github.com/asears/thething/actions/workflows/test-ci.yml)
+
+### Push
+
+[![test-ci Push](https://github.com/asears/thething/actions/workflows/test-ci.yml/badge.svg?event=push)](https://github.com/asears/thething/actions/workflows/test-ci.yml)
 
 ## Inspiration
 
