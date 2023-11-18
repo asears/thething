@@ -2,9 +2,30 @@
 name = "thething"
 version = "0.1.0"
 description = "The thing python example"
-authors = ["Andrew Sears"]
+authors = [
+    "Andrew Sears",
+]
+maintainers = [
+    ""Andrew Sears",
+]
 readme = "README.md"
-packages = [{include = "thething"}]
+packages = [{include = "thething", from = "thething"}]
+license = "MIT"
+repository = "https://github.com/asears/thething
+readme = "README.md"
+
+# classifiers = [
+#    "Topic :: Software Development :: Build Tools",
+#    "Topic :: Software Development :: Libraries :: Python Modules"
+# ]
+# homepage = "https://python-poetry.org/"
+# documentation = "https://python-poetry.org/docs/"
+# keywords = ["packaging", "poetry"]
+# include = ["CHANGELOG.md"]
+
+# [[tool.poetry.source]]
+# name = "private"
+# url = "http://example.com/simple"
 
 [build-system]
 requires = ["poetry-core"]
@@ -13,6 +34,18 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry.dependencies]
 python = "^3.12.x"
 # thething = {path = "./thething", develop = true}
+
+[tool.poetry.group.test.dependencies]
+pytest = "*"
+pytest-mock = "*"
+pytest-cov = "*"
+ruff = "*"
+
+[tool.poetry.group.docs.dependencies]
+mkdocs = "*"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/asears/thething/issues"
 
 [tool.pytest]
 

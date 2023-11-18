@@ -1,0 +1,13 @@
+# GitHub Labeler Action Config
+
+repo:
+- '*'
+
+'devops':
+- .github/**
+
+tests:
+- tests/**
+
+docs:
+- tests/**
