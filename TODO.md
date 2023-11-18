@@ -12,3 +12,10 @@
 - precommit
 - invoke or tox/nox
 - poetry
+- Squash commits
+- event badges / pr badges
+- alt tags for badge accessibility
+- Use action output on another action
+- Variables through actions
+- Pipeline workflow
+- Github workflow template extraction
