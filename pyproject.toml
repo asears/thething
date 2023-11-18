@@ -74,7 +74,8 @@ extend-include = ["*.ipynb"]
 select = [
     "E",
     "F",
-    "S"
+    "S",
+    "RUF",
 ]
 ignore = ["F401"]
 
