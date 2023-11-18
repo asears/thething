@@ -20,23 +20,23 @@ jobs:
         contents: write
       steps:
         - name: Checkout code
-          uses: actions/checkout@v2
+          uses: actions/checkout@v4
     
         - name: Set up Python
-          uses: actions/setup-python@v2
+          uses: actions/setup-python@v4
           with:
-            python-version: "3.11"
+            python-version: "3.12"
     
         - name: Install ruff
           run: pip install ruff
 
         # The working folder should be set to the location of pyproject.toml
         # Settings for ruff defined in pyproject.toml  
-        - name: Run ruff Formatter
+        - name: Run ruff format and fix
           run: |
-              ruff --format .
+              ruff format .
               ruff --fix .
-  
+
         - name: Check for changes
           id: check_changes
           run: |
