@@ -1,0 +1,36 @@
+name: test-ci
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "*"
+  pull_request:
+    branches:
+      - "*"
+
+permissions:
+  contents: read
+
+jobs:
+
+  test-ci:
+      runs-on: ubuntu-latest
+      permissions:
+        contents: write
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v2
+    
+        - name: Set up Python
+          uses: actions/setup-python@v2
+          with:
+            python-version: "3.11"
+    
+        - name: Install pytest
+          run: pip install pytest pytest-cov pytest-mock
+
+        - name: Run pytest
+          run: |
+              pytest .
+  

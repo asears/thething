@@ -1,4 +1,4 @@
-name: Format
+name: ruff
 
 on:
   workflow_dispatch:
@@ -14,7 +14,7 @@ permissions:
 
 jobs:
 
-  format:
+  ruff-bot:
       runs-on: ubuntu-latest
       permissions:
         contents: write
