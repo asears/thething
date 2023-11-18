@@ -36,6 +36,10 @@ jobs:
           run: |
               ruff format .
               ruff --fix .
+              # This should have a toggle for workflow dispatch
+              ruff --fix --unsafe-fixes .
+              # if linter fails, continue fixing PR
+              exit 0
 
         - name: Check for changes
           id: check_changes
