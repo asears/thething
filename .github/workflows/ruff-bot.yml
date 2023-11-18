@@ -33,13 +33,12 @@ jobs:
         # The working folder should be set to the location of pyproject.toml
         # Settings for ruff defined in pyproject.toml  
         - name: Run ruff format and fix
+          continue-on-error: true
           run: |
               ruff format .
               ruff --fix .
               # This should have a toggle for workflow dispatch
               ruff --fix --unsafe-fixes .
-              # if linter fails, continue fixing PR
-              exit 0
 
         - name: Check for changes
           id: check_changes
