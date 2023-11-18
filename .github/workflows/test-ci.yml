@@ -54,8 +54,6 @@ jobs:
               echo '${{ steps.setup-python.outputs.python-version }}'
               echo '${{ steps.setup-python.outputs.python-path }}'
 
-
-    
         - name: Poetry install
           run: poetry install
 
