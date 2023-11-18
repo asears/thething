@@ -7,6 +7,10 @@ This will introduce commits from a workflow directly into a pull request.
 Situations where you may want to do this are in tools such as Databricks or Jupyter,  
 where running black or ruff may add some steps.  No more local tooling!
 
+## Status
+
+<img alt="badge" src="https://github.com/OWNER/REPOSITORY/actions/workflows/test-ci/badge.svg"/>
+
 ## Inspiration
 
 [The Thing](https://en.wikipedia.org/wiki/The_Thing_(1982_film)) is a 1982 American science fiction horror film directed by John Carpenter.
