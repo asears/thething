@@ -1,3 +1,8 @@
+[tool.poetry.dependencies]
+python = "3.12.x"
+
+[tool.pytest]
+
 [tool.ruff]
 # for a mono repo or similar experience 
 # to .flake8 traversing up folders to find its config
