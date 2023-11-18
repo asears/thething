@@ -27,10 +27,38 @@ jobs:
           with:
             python-version: "3.12"
     
-        - name: Install pytest
-          run: pip install pytest pytest-cov pytest-mock
+        - name: Install pytest and ruff
+          run: pip install pytest pytest-cov pytest-mock ruff
 
+        - name: Run ruff
+          continue-on-error: true
+          run: |
+              ruff .
+
+        - name: Run ruff format
+          continue-on-error: true
+          run: |
+              ruff format . 
+              
         - name: Run pytest
+          continue-on-error: false
           run: |
               pytest .
-  
+
+        # TODO(AS): if tests succeed and ruff failed, format and fix and run tests again
+        # - uses: actions/github-script@v6
+        #   with:
+        #     script: |
+        #       if [ "${{ steps.check_changes.outputs.changed }}" == "true" ]; then
+        #         github.rest.actions.createWorkflowDispatch({
+        #           owner: owner,
+        #           repo: repo,
+        #           workflow_id: workflow_id,
+        #           ref: ref
+        #         })
+        #       fi
+        # TODO(AS): If tests fail, then rollback the ruff commit.
+        # - name: Run pytest
+        #   continue-on-error: false
+        #   run: |
+        #       pytest .
