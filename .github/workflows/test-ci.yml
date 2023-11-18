@@ -31,7 +31,13 @@ jobs:
           run: |
             pipx install poetry
             poetry --version
-          
+        
+            # TODO(AS): This could be committed to the repo as part of another workflow
+        - name: Lock poetry dependencies
+          run:
+            poetry lock
+            poetry export --output requirements.txt
+
         - name: Set up Python
           id: setup-python
           uses: actions/setup-python@v4
@@ -48,11 +54,7 @@ jobs:
               echo '${{ steps.setup-python.outputs.python-version }}'
               echo '${{ steps.setup-python.outputs.python-path }}'
 
-        # TODO(AS): This could be committed to the repo as part of another workflow
-        - name: Lock poetry dependencies
-          run:
-            poetry lock
-            poetry export --output requirements.txt
+
     
         - name: Poetry install
           run: poetry install
