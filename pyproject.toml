@@ -1,1 +1,10 @@
 [tool.ruff]
+# for a mono repo or similar experience 
+# to .flake8 traversing up folders to find its config
+# extend = "../pyproject.toml"
+
+[tool.ruff.lint]
+preview = true
+
+[tool.ruff.format]
+preview = true
