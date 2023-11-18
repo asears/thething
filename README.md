@@ -68,6 +68,10 @@ https://github.com/pytest-dev/pytest
 
 https://www.python.org/doc/versions/
 
+## mermaid
+
+https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/
+
 ## GitHub Actions
 
 https://github.com/features/actions
