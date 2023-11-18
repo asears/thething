@@ -1,10 +1,10 @@
 name: on-issue-opened
 
 on:
-    issues:
+  issues:
       types: [opened]
   
-  jobs:
+jobs:
     comment:
       runs-on: ubuntu-latest
       steps:
