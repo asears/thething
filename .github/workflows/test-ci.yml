@@ -16,6 +16,11 @@ jobs:
 
   test-ci:
       runs-on: ubuntu-latest
+      strategy:
+        fail-fast: false
+        matrix:
+          os: [Ubuntu]
+          python_version: ["3.12"]
       permissions:
         contents: write
       steps:
@@ -25,8 +30,9 @@ jobs:
         - name: Set up Python
           uses: actions/setup-python@v4
           with:
-            python-version: "3.12"
-    
+            python-version: "${{ matrix.python_version }}"
+            allow-prereleases: true
+            
         - name: Install pytest and ruff
           run: pip install pytest pytest-cov pytest-mock ruff
 
