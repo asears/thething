@@ -89,6 +89,10 @@ https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/
 
 https://github.com/search?q=repo%3Aactions%2Fsetup-python%20poetry&type=code
 
+### Editable
+
+https://github.com/orgs/python-poetry/discussions/1135
+
 ## Node
 
 https://github.com/npm/node-semver#versions

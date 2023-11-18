@@ -1,5 +1,18 @@
+[tool.poetry]
+name = "thething"
+version = "0.1.0"
+description = "The thing python example"
+authors = ["Andrew Sears"]
+readme = "README.md"
+packages = [{include = "thething"}]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.poetry.dependencies]
-python = "3.12.x"
+python = "^3.12.x"
+# thething = {path = "./thething", develop = true}
 
 [tool.pytest]
 
