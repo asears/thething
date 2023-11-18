@@ -2,9 +2,39 @@
 # for a mono repo or similar experience 
 # to .flake8 traversing up folders to find its config
 # extend = "../pyproject.toml"
+extend-include = ["*.ipynb"]
+
+# wemakestylepython/flake8hell settings
+# E,F,W,C90,I,N,D,UP,YTT,ANN,ASYNC,
+# S,BLE,FBT,B,A,COM,CPY,C4,DTZ,T10,DJ,EM,EXE,FA,ISC,ICN,G,
+# INP,PIE,T20,PYI,PT,Q,RSE,RET,SLF,SLOT,SIM,TID,TCH,INT,ARG,
+# PTH,TD,FIX,ERA,PD,PGH,PL,TRY,FLY,NPY,AIR,PERF,FURB,LOG,RUF
+
+# all except airflow, django
+# E,F,W,C90,I,N,D,UP,YTT,ANN,ASYNC,S,BLE,FBT,B,A,COM,CPY,C4,DTZ,
+# T10,EM,EXE,FA,ISC,ICN,G,INP,PIE,T20,PYI,PT,Q,RSE,RET,SLF,SLOT,
+# SIM,TID,TCH,INT,ARG,PTH,TD,FIX,ERA,PD,PGH,PL,TRY,FLY,NPY,PERF,
+# FURB,LOG,RUF
+
+# all except airflow, django, todos, fixmes, 
+# flake8-simplify  (simplify may autofix some issues with incorrect results
+# FURB and some others are WIP
+# E,F,W,C90,I,N,D,UP,YTT,ANN,ASYNC,S,BLE,FBT,B,A,COM,CPY,C4,DTZ,T10,
+# EM,EXE,FA,ISC,ICN,G,INP,PIE,T20,PYI,PT,Q,RSE,RET,SLF,SLOT,TID,TCH,
+# INT,ARG,PTH,ERA,PD,PGH,PL,TRY,FLY,NPY,PERF,FURB,LOG,RUF
+
+select = [
+    "E",
+    "F",
+    "S"
+]
+ignore = ["F401"]
 
 [tool.ruff.lint]
 preview = true
 
 [tool.ruff.format]
 preview = true
+exclude = ["*.pyi"]
+# To exclude notebooks from format
+# exclude = ["*.ipynb"]

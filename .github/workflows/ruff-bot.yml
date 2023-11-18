@@ -40,9 +40,9 @@ jobs:
           continue-on-error: true
           run: |
               ruff format .
-              ruff --fix .
+              ruff check . --fix
               # This should have a toggle for workflow dispatch
-              ruff --fix --unsafe-fixes .
+              ruff check . --fix --unsafe-fixes
 
         - name: Check for changes
           id: check_changes
