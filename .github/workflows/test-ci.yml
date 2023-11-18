@@ -33,10 +33,11 @@ jobs:
             poetry --version
         
             # TODO(AS): This could be committed to the repo as part of another workflow
+            
         - name: Lock poetry dependencies
           run:
             poetry lock
-            poetry export --output requirements.txt
+            # poetry export --output requirements.txt
 
         - name: Set up Python
           id: setup-python

@@ -2,12 +2,9 @@
 name = "thething"
 version = "0.1.0"
 description = "The thing python example"
-authors = [
-    "Andrew Sears",
-]
-maintainers = [
-    ""Andrew Sears",
-]
+authors = ["Andrew Sears"]
+maintainers = ["Andrew Sears"]
+
 readme = "README.md"
 packages = [{include = "thething", from = "thething"}]
 license = "MIT"
