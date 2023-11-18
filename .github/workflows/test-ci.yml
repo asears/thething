@@ -29,12 +29,13 @@ jobs:
           
         - name: Install poetry
           run: pipx install poetry
-        - uses: actions/setup-python@v4
-
+        
         - name: Set up Python
           uses: actions/setup-python@v4
           with:
             id: setup-python
+            # python-version-file: '.python-version'
+            # python-version-file: 'pyproject.toml'
             python-version: "${{ matrix.python_version }}"
             allow-prereleases: true
             update-environment: true
