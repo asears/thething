@@ -31,9 +31,9 @@ jobs:
           run: pipx install poetry
         
         - name: Set up Python
+          id: setup-python
           uses: actions/setup-python@v4
           with:
-            id: setup-python
             # python-version-file: '.python-version'
             # python-version-file: 'pyproject.toml'
             python-version: "${{ matrix.python_version }}"
@@ -46,7 +46,7 @@ jobs:
               echo '${{ steps.setup-python.outputs.python-version }}'
               echo '${{ steps.setup-python.outputs.python-path }}'
         
-        - run: poetry install
+        # - run: poetry install
 
         - name: Install pytest and ruff
           run: pip install pytest pytest-cov pytest-mock ruff
