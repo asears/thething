@@ -26,13 +26,27 @@ jobs:
       steps:
         - name: Checkout code
           uses: actions/checkout@v4
-    
+          
+        - name: Install poetry
+          run: pipx install poetry
+        - uses: actions/setup-python@v4
+
         - name: Set up Python
           uses: actions/setup-python@v4
           with:
+            id: setup-python
             python-version: "${{ matrix.python_version }}"
             allow-prereleases: true
-            
+            update-environment: true
+            cache: 'poetry'
+            # cache-dependency-path: setup.py
+        
+        - run: |
+              echo '${{ steps.setup-python.outputs.python-version }}'
+              echo '${{ steps.setup-python.outputs.python-path }}'
+        
+        - run: poetry install
+
         - name: Install pytest and ruff
           run: pip install pytest pytest-cov pytest-mock ruff
 
@@ -45,12 +59,13 @@ jobs:
           continue-on-error: true
           run: |
               ruff format . 
-              
+        
         - name: Run pytest
           continue-on-error: false
           run: |
               pytest .
               # pipx run nox --error-on-missing-interpreters -s tests-${{ matrix.python_version }}
+              # poetry run pytest
         # TODO(AS): if tests succeed and ruff failed, format and fix and run tests again
         # - uses: actions/github-script@v7
         #   with:
