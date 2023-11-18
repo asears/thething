@@ -1,4 +1,3 @@
-import thething
 
 
 def test_thething():
