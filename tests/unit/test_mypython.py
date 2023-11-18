@@ -1,3 +1,5 @@
+import thething.mypython as et
+
 def test_thething():
-    needs_format()
+    et.needs_format()
     pass
