@@ -50,7 +50,7 @@ jobs:
           continue-on-error: false
           run: |
               pytest .
-
+              # pipx run nox --error-on-missing-interpreters -s tests-${{ matrix.python_version }}
         # TODO(AS): if tests succeed and ruff failed, format and fix and run tests again
         # - uses: actions/github-script@v7
         #   with:
