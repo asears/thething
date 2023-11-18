@@ -5,9 +5,15 @@ on:
   push:
     branches:
       - "*"
+    branches-ignore:
+      - 'releases/*'
+    tags-ignore:        
+      - v*
   pull_request:
     branches:
       - "*"
+    branches-ignore:    
+      - 'releases/*'
 
 permissions:
   contents: read
