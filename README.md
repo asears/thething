@@ -85,6 +85,14 @@ https://www.python.org/doc/versions/
 
 https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/
 
+## Poetry
+
+https://github.com/search?q=repo%3Aactions%2Fsetup-python%20poetry&type=code
+
+## GitHub
+
+https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
 ## GitHub Actions
 
 https://github.com/features/actions
