@@ -10,3 +10,5 @@
 - Javascript lint
 - yaml check
 - precommit
+- invoke or tox/nox
+- poetry
