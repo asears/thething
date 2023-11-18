@@ -64,15 +64,15 @@ jobs:
               git push
             fi
 
-        # Comment that the PR was fixed with ruff
-        - uses: actions/github-script@v6
-          with:
-            script: |
-              if [ "${{ steps.check_changes.outputs.changed }}" == "true" ]; then
-                github.rest.issues.createComment({
-                  issue_number: context.issue.number,
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  body: 'ruff ruff 🐕'
-                })
-              fi
+        # # Comment that the PR was fixed with ruff
+        # - uses: actions/github-script@v6
+        #   with:
+        #     script: |
+        #       if [ "${{ steps.check_changes.outputs.changed }}" == "true" ]; then
+        #         github.rest.issues.createComment({
+        #           issue_number: context.issue.number,
+        #           owner: context.repo.owner,
+        #           repo: context.repo.repo,
+        #           body: 'ruff ruff 🐕'
+        #         })
+        #       fi
