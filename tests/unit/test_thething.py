@@ -1,5 +1,7 @@
 """Test thething."""
+
 from thething import __version__
+
 
 def test_version():
     """Test theversion."""
