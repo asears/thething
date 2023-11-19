@@ -33,9 +33,10 @@ jobs:
             poetry --version
         
             # TODO(AS): This could be committed to the repo as part of another workflow
-            
+
         - name: Lock poetry dependencies
           run:
+            poetry lock --no-update 
             poetry lock
             # poetry export --output requirements.txt
 

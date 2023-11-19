@@ -89,6 +89,8 @@ https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/
 
 https://github.com/search?q=repo%3Aactions%2Fsetup-python%20poetry&type=code
 
+https://stackoverflow.com/questions/75576816/what-do-i-do-when-i-change-poetry-pyproject-toml
+
 ### Editable
 
 https://github.com/orgs/python-poetry/discussions/1135

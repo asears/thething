@@ -37,12 +37,18 @@ pytest = "*"
 pytest-mock = "*"
 pytest-cov = "*"
 ruff = "*"
+invoke = "*"
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "*"
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/asears/thething/issues"
+
+# [[tool.poetry.source]]
+# name = "azure"
+# url = "https://pkgs.dev.azure.com/{org}/{project}/_packaging/private-sources/pypi/simple/"
+# secondary = true
 
 [tool.pytest]
 
