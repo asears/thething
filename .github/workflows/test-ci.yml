@@ -26,6 +26,18 @@ jobs:
       steps:
         - name: Checkout code
           uses: actions/checkout@v4
+
+        - name: Set up Python
+          id: setup-python
+          uses: actions/setup-python@v4
+          with:
+            python-version-file: 'pyproject.toml'
+            allow-prereleases: true
+            update-environment: true
+        # If installing poetry prior to setting up python, there's an error.
+        # The currently activated Python version 3.10.12 is not supported by the project (^3.12).
+        # If running setup-python with cache dependency poetry, it may fail if poetry lock not
+        # specifically checked in.
           
         - name: Install poetry
           run: |
@@ -40,8 +52,8 @@ jobs:
             poetry lock --no-ansi
             # poetry export --output requirements.txt
 
-        - name: Set up Python
-          id: setup-python
+        - name: Set up Python with cache
+          id: setup-python-cache
           uses: actions/setup-python@v4
           with:
             # python-version-file: '.python-version'
@@ -55,6 +67,9 @@ jobs:
         - run: |
               echo '${{ steps.setup-python.outputs.python-version }}'
               echo '${{ steps.setup-python.outputs.python-path }}'
+              echo '${{ steps.setup-python-cache.outputs.python-version }}'
+              echo '${{ steps.setup-python-cache.outputs.python-path }}'
+
 
         - name: Poetry install
           run: poetry install
