@@ -153,3 +153,7 @@ https://github.com/actions/github-script
 ## GitHub Bots
 
 https://github.com/marketplace/actions/github-project-bot
+
+## Nektos Act
+
+https://github.com/nektos/act
