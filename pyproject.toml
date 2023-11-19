@@ -28,7 +28,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.dependencies]
-python = "^3.12.x"
+python = "^3.12"
 # thething = {path = "./thething", develop = true}
 
 [tool.poetry.group.test.dependencies]
@@ -67,14 +67,14 @@ extend-include = ["*.ipynb"]
 # E,F,W,C90,I,N,D,UP,YTT,ANN,ASYNC,S,BLE,FBT,B,A,COM,CPY,C4,DTZ,
 # T10,EM,EXE,FA,ISC,ICN,G,INP,PIE,T20,PYI,PT,Q,RSE,RET,SLF,SLOT,
 # SIM,TID,TCH,INT,ARG,PTH,TD,FIX,ERA,PD,PGH,PL,TRY,FLY,NPY,PERF,
-# FURB,LOG,RUF
+# FURB,LOG,RUF,TRIO
 
 # all except airflow, django, todos, fixmes, 
 # flake8-simplify  (simplify may autofix some issues with incorrect results
-# FURB and some others are WIP
+# FURB,LOG,RUF,TRIO and some others are WIP or require preview flag
 # E,F,W,C90,I,N,D,UP,YTT,ANN,ASYNC,S,BLE,FBT,B,A,COM,CPY,C4,DTZ,T10,
 # EM,EXE,FA,ISC,ICN,G,INP,PIE,T20,PYI,PT,Q,RSE,RET,SLF,SLOT,TID,TCH,
-# INT,ARG,PTH,ERA,PD,PGH,PL,TRY,FLY,NPY,PERF,FURB,LOG,RUF
+# INT,ARG,PTH,ERA,PD,PGH,PL,TRY,FLY,NPY,PERF,FURB,LOG,RUF,TRIO
 
 select = [
     "E",
