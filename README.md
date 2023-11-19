@@ -7,6 +7,9 @@ This will introduce commits from a workflow directly into a pull request.
 Situations where you may want to do this are in tools such as Databricks or Jupyter,  
 where running black or ruff may add some steps.  No more local tooling!
 
+This requires push/pull/synch process with each commit if setup for on push, 
+as ruff format and ruff fix may change code.
+
 ## Status
 
 ### Main
@@ -27,6 +30,8 @@ where running black or ruff may add some steps.  No more local tooling!
 [Jed, as the Dog-Thing](https://en.wikipedia.org/wiki/Jed_(wolfdog)), was a Pacific Northwestern American animal actor.
 
 I  see this style of "save and improve" coding becoming more prevalent with the addition of Copilots and PR Bots.
+
+This might turn your commits into a strange E.T. morphing of your intended code.
 
 ## Caveats
 
@@ -79,9 +84,37 @@ https://github.com/pytest-dev/pytest
 
 ## python
 
+### Setup-Python Action
+
+Versioning of python can be done in pyproject.toml and picked up by the setup-python GitHub action.
+
+.python-version
+
+```plaintext
+3.12
+```
+
+project `pyproject.toml`
+
+```toml
+[project]
+requires-python = "${pythonVersion}"
+```
+
+poetry `pyproject.toml`
+
+```toml
+[tool.poetry.dependencies]
+python = "^3.8"
+```
+
 https://www.python.org/doc/versions/
 
+https://realpython.com/intro-to-pyenv/
+
 ## mermaid
+
+Mermaid and SVG diagrams for markdown and text generation.
 
 https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/
 
@@ -90,6 +123,14 @@ https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/
 https://github.com/search?q=repo%3Aactions%2Fsetup-python%20poetry&type=code
 
 https://stackoverflow.com/questions/75576816/what-do-i-do-when-i-change-poetry-pyproject-toml
+
+Update all packages to latest
+
+```shell
+poetry cache clear . --all
+rm poetry.lock
+poetry install
+```
 
 ### Editable
 

@@ -9,7 +9,6 @@ readme = "README.md"
 packages = [{include = "thething", from = "thething"}]
 license = "MIT"
 repository = "https://github.com/asears/thething"
-readme = "README.md"
 
 # classifiers = [
 #    "Topic :: Software Development :: Build Tools",
