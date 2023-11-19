@@ -19,3 +19,4 @@
 - Variables through actions
 - Pipeline workflow
 - Github workflow template extraction
+- pip install openai-cli

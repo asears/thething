@@ -36,8 +36,8 @@ jobs:
 
         - name: Lock poetry dependencies
           run:
-            poetry lock --no-update 
-            poetry lock
+            poetry lock --no-update --no-ansi
+            poetry lock --no-ansi
             # poetry export --output requirements.txt
 
         - name: Set up Python
