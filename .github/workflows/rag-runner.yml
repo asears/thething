@@ -1,0 +1,57 @@
+# RAG runner
+name: rag-runner
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHON_VERSION: "3.13"  # ${{ vars.PYTHON_VERSION_VAR }}
+  OPENAI_API_KEY: $ {{ secrets.OPENAI_API_KEY }}
+  
+jobs:
+  rag-bot:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+
+      # This step is not required if using uv python install
+      # - name: Set up Python
+      #   uses: actions/setup-python@v4
+      #   with:
+      #     python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+          # tool-dir: "/path/to/tool/dir"
+          # tool-bin-dir: "/path/to/tool-bin/dir"
+          # enable-cache: true
+          
+      - name: Install Python ${{ env.PYTHON_VERSION }}
+        run: uv python install $PYTHON_VERSION
+        env:
+          PYTHON_VERSION: ${{ env.PYTHON_VERSION }}
+
+      # https://pytest-with-eric.com/pytest-best-practices/pytest-plugins/
+      - name: pytest
+        run: uv pip install -U pytest pytest-mock pytest-cov pytest-sugar pytest-asyncio pytest-xdist pytest-timeout pytest-html pytest-profiling
+
+      # https://docs.llamaindex.ai/en/stable/getting_started/starter_tools/rag_cli/
+      - name: Install llama and chromadb
+        run: uv pip install -U llama-index chromadb
+
+      - name: Test
+        run: uv run --frozen pytest
+
+      - name: ingest vectordb files
+        run: llamaindex-cli rag --files "./README.md"
+        # llamaindex-cli rag --files "./docs/**/*.rst"
+
+        # llamaindex-cli rag --question "What is this project and how could I make the readme better?"
+      
+    
