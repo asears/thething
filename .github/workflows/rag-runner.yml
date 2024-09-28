@@ -55,14 +55,26 @@ jobs:
 
       # https://pytest-with-eric.com/pytest-best-practices/pytest-plugins/
       - name: pytest
-        run: uv pip install -U pytest pytest-mock pytest-cov pytest-sugar pytest-asyncio pytest-xdist pytest-timeout pytest-html pytest-profiling
+        run: >
+          uv venv
+          uv pip install -U 
+          pytest pytest-mock pytest-cov 
+          pytest-sugar 
+          pytest-asyncio 
+          pytest-xdist 
+          pytest-timeout 
+          pytest-html 
+          pytest-profiling
 
       # https://docs.llamaindex.ai/en/stable/getting_started/starter_tools/rag_cli/
       - name: Install llama and chromadb
         run: uv pip install -U llama-index chromadb
 
+      # https://docs.astral.sh/uv/concepts/projects
       - name: Install the project
         run: uv sync --all-extras --dev
+        # uv sync --extra build
+        # uv sync --extra build --extra compile
 
       - name: Test
         run: uv run --frozen pytest
