@@ -76,8 +76,9 @@ jobs:
         # uv sync --extra build
         # uv sync --extra build --extra compile
 
-      - name: Test
+      - name: Test with frozen dependencies
         run: uv run --frozen pytest
+            # uv run --frozen pytest tests/unit --cov
 
       - name: ingest vectordb files
         run: llamaindex-cli rag --files "./README.md"
