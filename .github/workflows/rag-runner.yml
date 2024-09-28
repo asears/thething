@@ -8,9 +8,7 @@ permissions:
   contents: read
 
 env:
-  PYTHON_VERSION: "3.13"  # ${{ vars.PYTHON_VERSION_VAR }}
-  # TODO(AS): Scope of this may be too broad, define for step only.
-  OPENAI_API_KEY: $ {{ secrets.OPENAI_API_KEY }}
+  PYTHON_VERSION: "3.13"  # ${{ vars.PYTHON_VERSION_VAR }}  # for environments in github or general repo setting.
   
 jobs:
   quality-check:
@@ -159,6 +157,9 @@ jobs:
           source venv/bin/activate
           llamaindex-cli rag --files "./README.md"
         continue-on-error: true
+        env:
+          OPENAI_API_KEY: $ {{ secrets.OPENAI_API_KEY }}
+          
         # llamaindex-cli rag --files "./docs/**/*.rst"
 
         # llamaindex-cli rag --question "What is this project and how could I make the readme better?"
