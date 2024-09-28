@@ -1,0 +1,22 @@
+# Set update schedule for GitHub Actions
+# https://github.com/renovatebot/renovate alternative
+version: 2
+updates:
+
+  - package-ecosystem: "github-actions"
+    directory: "/"  # must be /
+    schedule:
+      interval: "monthly"
+
+  # pyproject.toml / pipfile.lock
+  # https://peps.python.org/pep-0621/
+  # https://docs.astral.sh/uv/guides/integration/dependency-bots/
+  
+  # as of September, 2024, dependabot does not support uv.lock
+  # pip-tools deprecation in favor of uv pr with 1 additional coming for uv.lock
+  # https://github.com/dependabot/dependabot-core/pull/10040
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+      
