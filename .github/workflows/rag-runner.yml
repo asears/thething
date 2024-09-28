@@ -20,7 +20,7 @@ jobs:
       matrix:
         python-version:
           - "3.12"
-    continue-on-error: false
+    # continue-on-error: false
     steps:
       - name: checkout
         uses: actions/checkout@v4
