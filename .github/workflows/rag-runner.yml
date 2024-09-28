@@ -21,6 +21,19 @@ jobs:
         python-version:
           - "3.12"
     steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            pyproject.toml
+            thething
+            tests
+
+      # - name: Checkout tools repo
+      #   uses: actions/checkout@v4
+      #   with:
+      #     repository: my-org/my-tools
+      #     path: my-tools            
       - name: Install the latest version of uv
         uses: astral-sh/setup-uv@v3
         with:
