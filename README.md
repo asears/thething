@@ -63,8 +63,22 @@ Example In-Branch Workflow
 
 - Add some workflow_dispatch conditionals and parameters
 - Change the events being used to trigger the actions
+- RAG and Web Search API integration
+- Path and filename filters
 - Additional rules for ruff
 - Github Templating
+- Auto-generate tests
+- Auto-generate docs
+
+## uv
+
+https://astral.sh/blog/uv-unified-python-packaging
+
+https://astral.sh/blog/uv
+
+https://github.com/marketplace/actions/setup-uv
+
+https://docs.astral.sh/uv/guides/integration/pre-commit/
 
 ## ruff
 
@@ -170,4 +184,11 @@ https://github.com/dorny/paths-filter
 
 https://github.com/dorny/paths-filter/blob/master/CHANGELOG.md
 
+## RAG
+
+https://github.com/pchunduri6/rag-demystified
+
+https://github.com/microsoft/RAG_Hack
+
+https://docs.llamaindex.ai/en/stable/getting_started/starter_tools/rag_cli/
 
