@@ -29,6 +29,7 @@ jobs:
       - name: Install Nektos Act
         run: |
           gh extension install https://github.com/nektos/gh-act
+          alias act='gh act'
 
           
       - name: List actions by events that trigger workflows
