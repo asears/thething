@@ -100,7 +100,6 @@ jobs:
         env:
           PYTHON_VERSION: ${{ env.PYTHON_VERSION }}
       
-      # https://pytest-with-eric.com/pytest-best-practices/pytest-plugins/
       # canonically, .venv can be used as default path with uv venv
       # however we may want multiple named environments/paths here for testing matrix of dependencies on different branches or files
       # using checkout branch or specific files
@@ -117,9 +116,14 @@ jobs:
       # UV_NATIVE_TLS=1 for corporate trust store
       # UV_NO_CACHE=1 for using no caching
       # source .venv/bin/activate &&
+      
+      - name: create uv virtual environment venv
+        run: |
+          uv venv venv
+
+      # https://pytest-with-eric.com/pytest-best-practices/pytest-plugins/
       - name: pytest
         run: >
-          uv venv venv &&
           source venv/bin/activate &&
           uv pip install -U 
           pytest pytest-mock pytest-cov 
@@ -129,12 +133,6 @@ jobs:
           pytest-timeout 
           pytest-html 
           pytest-profiling
-
-      # https://docs.llamaindex.ai/en/stable/getting_started/starter_tools/rag_cli/
-      - name: Install llama and chromadb
-        run: |
-          source venv/bin/activate
-          uv pip install -U llama-index chromadb
 
       # https://docs.astral.sh/uv/concepts/projects
       - name: Install the project
@@ -150,6 +148,12 @@ jobs:
           # uv run --frozen pytest tests/unit --cov
         continue-on-error: true
         
+      # https://docs.llamaindex.ai/en/stable/getting_started/starter_tools/rag_cli/
+      - name: Install llama and chromadb
+        run: |
+          source venv/bin/activate
+          uv pip install -U llama-index chromadb llama-index-vector-stores-chroma
+          
       - name: ingest vectordb files
         run: |
           source venv/bin/activate
@@ -158,6 +162,13 @@ jobs:
         # llamaindex-cli rag --files "./docs/**/*.rst"
 
         # llamaindex-cli rag --question "What is this project and how could I make the readme better?"
-      
+
+      # Documentation
+      # https://github.com/astral-sh/uv/issues/6578
+      # uv run --no-dev
+      # uv run --no-project
+      # after setting up project, delete pyproject.toml, uv.lock before packaging?
+      # uvx --with-requirements docs/requirements.txt -- mkdocs serve -f mkdocs.public.yml
+      # Teardown
       # - name: Minimize uv cache
       #  run: uv cache prune --ci
