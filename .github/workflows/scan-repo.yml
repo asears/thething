@@ -1,5 +1,5 @@
 # https://github.com/boostsecurityio/poutine
-name: scan-repo
+name: :circus_tent: scan-repo
 
 on: workflow_dispatch
 

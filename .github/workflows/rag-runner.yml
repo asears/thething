@@ -1,5 +1,5 @@
 # RAG runner
-name: rag-runner
+name: :speech_balloon: rag-runner
 
 on:
   workflow_dispatch:

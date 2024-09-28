@@ -202,3 +202,6 @@ Dependabot for github workflows RSS feed alternative
 
 https://devops-actions.github.io/github-actions-marketplace-news/
 
+## Github Emojis
+
+https://gist.github.com/rxaviers/7360908

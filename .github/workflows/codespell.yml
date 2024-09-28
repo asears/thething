@@ -1,7 +1,7 @@
 # Codespell configuration is within .codespellrc
 # https://github.com/codespell-project/actions-codespell
 ---
-name: Codespell
+name: :green_book: Codespell
 
 on:
   push:
