@@ -18,7 +18,12 @@ jobs:
       run:
         shell: bash
         # working-directory: .
-        
+    env:
+      GH_TOKEN: ${{ github.token }}
+
+    permissions:
+      write
+      
     steps:
       - uses: actions/checkout@v4
 
@@ -26,6 +31,7 @@ jobs:
         run: |
           gh extension install https://github.com/nektos/gh-act
 
+          
       - name: List actions by events that trigger workflows
         run: |
             act -l branch_protection_rule
