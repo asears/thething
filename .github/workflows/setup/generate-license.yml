@@ -1,0 +1,15 @@
+name: generate-license
+ 
+on:
+  workflow_dispatch:
+
+jobs:
+  gen-license:
+    runs-on: ubuntu-latest
+
+    steps:
+    
+    - name: gen-license
+      run: |
+        gh extension install mislav/gh-license
+        gh license
