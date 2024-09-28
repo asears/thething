@@ -1,0 +1,40 @@
+### .github/workflows/dependabot_automerge.yml
+### This workflow has access to secrets and a read-write token
+name: Dependabot Automerge
+on:
+  workflow_run:
+    workflows: ["Dependabot PR Check"]
+    types: 
+      - completed
+
+permissions:
+
+  # down scope as necessary via https://docs.github.com/en/actions/reference/authentication-in-a-workflow#modifying-the-permissions-for-the-github_token
+  # https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#permissions
+  # permissions: read-all
+  # permissions: write-all
+  # permissions: {} # disable all permissions
+  actions: none # read|write|none
+  attestations: none # read|write|none
+  checks: none # read|write|none
+  contents: none # read|write|none
+  deployments: none # read|write|none
+  id-token: none # write|none
+  issues: none # read|write|none
+  discussions: none # read|write|none
+  packages: none # read|write|none
+  pages: none # read|write|none
+  pull-requests: none # read|write|none
+  repository-projects: none # read|write|none
+  security-events: none # read|write|none
+  statuses: none # read|write|none
+
+jobs:
+  do-stuff:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
