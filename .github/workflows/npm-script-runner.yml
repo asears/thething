@@ -1,3 +1,4 @@
+name: npm-script-runner
 on: workflow_dispatch
 
 jobs:
