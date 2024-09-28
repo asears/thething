@@ -12,7 +12,7 @@ jobs:
     
     - name: gh-actuse
       run: |
-        gh extension install geoffreywiseman/gh-actuse
-        gh actuse
+        gh extension install geoffreywiseman/gh-actuse >> $GITHUB_OUTPUT
+        gh actuse >> $GITHUB_OUTPUT
       env:
         GH_TOKEN: ${{ github.token }}
