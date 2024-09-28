@@ -101,9 +101,26 @@ jobs:
           PYTHON_VERSION: ${{ env.PYTHON_VERSION }}
       
       # https://pytest-with-eric.com/pytest-best-practices/pytest-plugins/
+      # canonically, .venv can be used as default path with uv venv
+      # however we may want multiple named environments/paths here for testing matrix of dependencies on different branches or files
+      # using checkout branch or specific files
+      # A variable for the folder for the venv could be extracted for reuse
+      # the --seed param can be used to install pip, setuptools, wheel into venv automatically
+      # uv can use UV_SYSTEM_PYTHON=1 or --system for ci environments with transitory agents
+      # --prompt can be used to customize venv prompt to include things like python version or specific ci scenario identifiers
+      # -p can be used to specify a specific python environment, installing dynamically as part of venv creation
+      # no more Anaconda or pipenv
+      # -v for verbose
+      # Simple pinning of dependencies by date
+      # --exclude-newer '2024-09-30T02:07:43Z' or '2024-09-30'
+      # RUST_LOG= for fine grained logging
+      # UV_NATIVE_TLS=1 for corporate trust store
+      # UV_NO_CACHE=1 for using no caching
+      # source .venv/bin/activate &&
       - name: pytest
         run: >
           uv venv venv &&
+          source venv/bin/activate &&
           uv pip install -U 
           pytest pytest-mock pytest-cov 
           pytest-sugar 
@@ -116,7 +133,7 @@ jobs:
       # https://docs.llamaindex.ai/en/stable/getting_started/starter_tools/rag_cli/
       - name: Install llama and chromadb
         run: |
-          source .venv/bin/activate
+          source venv/bin/activate
           uv pip install -U llama-index chromadb
 
       # https://docs.astral.sh/uv/concepts/projects
@@ -135,7 +152,7 @@ jobs:
         
       - name: ingest vectordb files
         run: |
-          source .venv/bin/activate
+          source venv/bin/activate
           llamaindex-cli rag --files "./README.md"
         continue-on-error: true
         # llamaindex-cli rag --files "./docs/**/*.rst"
