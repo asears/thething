@@ -12,6 +12,30 @@ env:
   OPENAI_API_KEY: $ {{ secrets.OPENAI_API_KEY }}
   
 jobs:
+  quality-check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    strategy:
+      matrix:
+        python-version:
+          - "3.12"
+    steps:
+      - name: Install the latest version of uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+          
+      # NOTE: uvx locally may be blocked by some security software
+      - name: ruff lint
+        run: >
+          uvx ruff@latest check .
+          --select "ALL"
+          --preview
+
+      - name: ruff format check
+        run: uvx ruff@latest format --check
+        
   rag-bot:
     runs-on: ubuntu-latest
     permissions:
@@ -52,7 +76,7 @@ jobs:
         run: uv python install $PYTHON_VERSION  # ${{ matrix.python-version }}
         env:
           PYTHON_VERSION: ${{ env.PYTHON_VERSION }}
-
+      
       # https://pytest-with-eric.com/pytest-best-practices/pytest-plugins/
       - name: pytest
         run: >
