@@ -1,0 +1,14 @@
+name: actions-usage
+
+on:
+  workflow_dispatch:
+
+jobs:
+  actions-usage:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: gh-actuse
+      run: |
+        gh extension install geoffreywiseman/gh-actuse
+        gh actuse
