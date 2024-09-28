@@ -47,9 +47,9 @@ jobs:
           --select "ALL"
           --preview
         # continue-on-error: false
-
-        if: ${{ success() }} || ${{ failure() }}
+        
       - name: ruff format check
+        if: ${{ success() }} || ${{ failure() }}
         run: uvx ruff@latest format --check
         # As of September 28, 2024, continue on error true shows green even though step failed.
         # continue-on-error: false
