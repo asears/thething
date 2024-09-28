@@ -4,7 +4,7 @@
 # Further Improvements: file extension, path filtering
 # https://github.com/dorny/paths-filter
 
-name: :dog: ruff
+name: 🐶 ruff
 
 on:
   workflow_dispatch:

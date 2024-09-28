@@ -1,6 +1,6 @@
 ### .github/workflows/dependabot_automerge.yml
 ### This workflow has access to secrets and a read-write token
-name: :dependabot: Dependabot Automerge
+name: Dependabot Automerge
 on:
   workflow_run:
     workflows: ["Dependabot PR Check"]

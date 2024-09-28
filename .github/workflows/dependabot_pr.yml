@@ -1,6 +1,6 @@
 ### .github/workflows/dependabot_pr.yml
 ### This workflow doesn't have access to secrets and has a read-only token
-name: :dependabot: Dependabot PR Check
+name: Dependabot PR Check
 on:
   pull_request
 
