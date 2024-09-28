@@ -205,3 +205,19 @@ https://devops-actions.github.io/github-actions-marketplace-news/
 ## Github Emojis
 
 https://gist.github.com/rxaviers/7360908
+
+## Multi-Repo Dispatch Events
+
+Manually trigger action.
+
+3rd party service action (slack, teams, sanity.io, servicenow)
+
+https://github.com/marketplace/actions/repository-dispatch
+
+```yml
+on:
+  repository_dispatch:
+    types:
+      - manual-trigger-mytest
+      - manual-trigger-all
+```
