@@ -157,3 +157,17 @@ https://github.com/marketplace/actions/github-project-bot
 ## Nektos Act
 
 https://github.com/nektos/act
+
+## changed-files
+
+https://github.com/tj-actions/changed-files
+
+https://github.com/tj-actions/changed-files/releases
+
+## paths-filter
+
+https://github.com/dorny/paths-filter
+
+https://github.com/dorny/paths-filter/blob/master/CHANGELOG.md
+
+
