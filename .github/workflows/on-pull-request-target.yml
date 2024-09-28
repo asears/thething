@@ -1,6 +1,14 @@
 name: on-pull-request-target
 
-on: pull_request_target
+on: pull_request
+# NOTE: On pull request target allows code in the action write access to the repo
+# on: pull_request_target
+
+permissions:
+  contents: write
+  pull-requests: write
+  repository-projects: write
+  id-token: write
 
 jobs:
   welcome:
