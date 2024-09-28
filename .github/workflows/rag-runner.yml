@@ -9,6 +9,7 @@ permissions:
 
 env:
   PYTHON_VERSION: "3.13"  # ${{ vars.PYTHON_VERSION_VAR }}
+  # TODO(AS): Scope of this may be too broad, define for step only.
   OPENAI_API_KEY: $ {{ secrets.OPENAI_API_KEY }}
   
 jobs:
