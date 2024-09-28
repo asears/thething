@@ -95,14 +95,15 @@ jobs:
           # cache-dependency-glob: "requirements**.txt"
           
       - name: Install Python ${{ env.PYTHON_VERSION }}  # ${{ matrix.python-version }}
-        run: uv python install $PYTHON_VERSION  # ${{ matrix.python-version }}
+        run: |
+          uv python install $PYTHON_VERSION  # ${{ matrix.python-version }}
         env:
           PYTHON_VERSION: ${{ env.PYTHON_VERSION }}
       
       # https://pytest-with-eric.com/pytest-best-practices/pytest-plugins/
       - name: pytest
         run: >
-          uv venv &&
+          uv venv venv &&
           uv pip install -U 
           pytest pytest-mock pytest-cov 
           pytest-sugar 
@@ -114,22 +115,28 @@ jobs:
 
       # https://docs.llamaindex.ai/en/stable/getting_started/starter_tools/rag_cli/
       - name: Install llama and chromadb
-        run: uv pip install -U llama-index chromadb
+        run: |
+          source .venv/bin/activate
+          uv pip install -U llama-index chromadb
 
       # https://docs.astral.sh/uv/concepts/projects
       - name: Install the project
-        run: uv sync --all-extras --dev
-        # uv sync --extra build
-        # uv sync --extra build --extra compile
+        run: |
+          uv sync --all-extras --dev
+          # uv sync --extra build
+          # uv sync --extra build --extra compile
         continue-on-error: true
         
       - name: Test with frozen dependencies
-        run: uv run --frozen pytest
-            # uv run --frozen pytest tests/unit --cov
+        run: |
+          uv run --frozen pytest
+          # uv run --frozen pytest tests/unit --cov
         continue-on-error: true
         
       - name: ingest vectordb files
-        run: llamaindex-cli rag --files "./README.md"
+        run: |
+          source .venv/bin/activate
+          llamaindex-cli rag --files "./README.md"
         continue-on-error: true
         # llamaindex-cli rag --files "./docs/**/*.rst"
 
