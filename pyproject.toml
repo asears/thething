@@ -1,3 +1,4 @@
+# TODO(AS): Upgrade to uv packaging
 [tool.poetry]
 name = "thething"
 version = "0.1.0"
