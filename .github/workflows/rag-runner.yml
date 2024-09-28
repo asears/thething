@@ -23,7 +23,7 @@ jobs:
           # - "3.11"
           - "3.12"
     steps:
-
+      - uses: actions/checkout@v4
       # This step is not required if using uv python install
       # It can be faster to use this instead of uv
       # because GitHub caches the Python versions alongside the runner
