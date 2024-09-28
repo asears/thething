@@ -1,5 +1,9 @@
 # Set update schedule for GitHub Actions
-# https://github.com/renovatebot/renovate alternative
+# alternative
+# https://github.com/renovatebot/renovate 
+
+# permissions for dependabot 2021 change
+# https://github.com/dependabot/dependabot-core/issues/3253
 version: 2
 updates:
 
