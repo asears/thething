@@ -1,3 +1,9 @@
+# Further improvements - setup uv action, ruff action
+# https://docs.astral.sh/uv/guides/integration/github/
+# https://github.com/chartboost/ruff-action
+# Further Improvements: file extension, path filtering
+# https://github.com/dorny/paths-filter
+
 name: ruff
 
 on:
@@ -53,7 +59,27 @@ jobs:
               echo "::set-output name=changed::false"
             fi
           continue-on-error: true
-  
+
+        # Placeholder - checking for file changes
+        # - shell: pwsh
+        #   id: check_file_changed
+        #   run: |
+        #     # Diff HEAD with the previous commit
+        #     $diff = git diff --name-only HEAD^ HEAD
+    
+        #     # Check if a file under docs/ or with the .md extension has changed (added, modified, deleted)
+        #     $SourceDiff = $diff | Where-Object { $_ -match '^docs/' -or $_ -match '.md$' }
+        #     $HasDiff = $SourceDiff.Length -gt 0
+    
+        #     # Set the output named "docs_changed"
+        #     Write-Host "::set-output name=docs_changed::$HasDiff"
+
+        # # Run the step only with "docs_changed" equals "True"
+        # - shell: pwsh
+        #   # steps.<step_id>.outputs.<output name>
+        #   if: steps.check_file_changed.outputs.docs_changed == 'True'
+        #   run: echo publish docs
+      
         # Customize the user name and commit message, and can add an email such as Github Actions email
         - name: Set up Git and Commit Changes
           run: |
@@ -63,7 +89,7 @@ jobs:
               git add .
               git commit -m "ruff ruff 🐕"
               git push
-            fi
+        fi
 
         # # TODO(AS): Comment that the PR was fixed with ruff, only in a pr.
         # - uses: actions/github-script@v7
@@ -77,3 +103,12 @@ jobs:
         #           body: 'ruff ruff 🐕'
         #         })
         #       fi
+
+  # # Run the job only with "docs_changed" equals "True"
+  # conditional_job:
+  #   runs-on: 'ubuntu-20.04'
+  #   needs: [ conditional_job_check_files ]
+  #   if: needs.conditional_job_check_files.outputs.docs_changed == 'True'
+  #   steps:
+  #   - shell: pwsh
+  #     run: echo publish docs
