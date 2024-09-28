@@ -1,0 +1,66 @@
+# Validate GitHub Actions workflows and yaml
+
+name: validate-actions
+
+on:
+  # push:
+  #   branches: [ "main" ]  # Or use 
+  # pull_request:
+  #   branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: build-workflows
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./github/workflows
+        
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Nektos Act
+        run: |
+          gh extension install https://github.com/nektos/gh-act
+
+      - name: List actions by events that trigger workflows
+        run: |
+            act -l branch_protection_rule
+            act -l check_run
+            act -l check_suite
+            act -l create
+            act -l delete
+            act -l deployment
+            act -l deployment_status
+            act -l discussion
+            act -l discussion_comment
+            act -l fork
+            act -l gollum  # wiki
+            act -l issue_comment   # pull_request_comment
+            act -l issues
+            act -l label
+            act -l merge_group
+            act -l milestone
+            act -l page_build
+            act -l public
+            act -l pull_request
+            act -l pull_request_review
+            act -l pull_request_review_comment
+            act -l pull_request_target
+            act -l registry_package
+            act -l release
+            act -l repository_dispatch
+            act -l schedule
+            act -l status
+            act -l watch
+            act -l workflow_call
+            act -l workflow_dispatch
+            act -l workflow_run          
+
+      - name: Lint Yaml
+        run: |
+          yamllint .
+        working-directory: /
