@@ -192,3 +192,13 @@ https://github.com/microsoft/RAG_Hack
 
 https://docs.llamaindex.ai/en/stable/getting_started/starter_tools/rag_cli/
 
+## GitHub Dependabot
+
+https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions
+
+## Github Actions Marketplace News
+
+Dependabot for github workflows RSS feed alternative
+
+https://devops-actions.github.io/github-actions-marketplace-news/
+
