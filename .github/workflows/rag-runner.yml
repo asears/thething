@@ -56,7 +56,7 @@ jobs:
       # https://pytest-with-eric.com/pytest-best-practices/pytest-plugins/
       - name: pytest
         run: >
-          uv venv
+          uv venv &&
           uv pip install -U 
           pytest pytest-mock pytest-cov 
           pytest-sugar 
