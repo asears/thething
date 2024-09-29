@@ -221,3 +221,9 @@ on:
       - manual-trigger-mytest
       - manual-trigger-all
 ```
+
+## Github Artifacts v4
+
+The action to download artifacts has some new addons as well. In the list of inputs, we now have github-token, repository and run-id. Given a properly scoped token with actions:read, artifacts can now be downloaded from other workflow runs and repositories. By default with no token specified, the action will only be able to download from the current workflow run and any previous run attempts.
+
+https://github.blog/news-insights/product-news/get-started-with-v4-of-github-actions-artifacts/
