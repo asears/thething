@@ -1,0 +1,13 @@
+name: docker-alpine
+
+on:
+  workflow_dispatch:
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    container: alpine:3.14
+    steps:
+    - name: Send greeting
+      run: echo "Welcome from alpine:3.14"
+      # uses: docker://alpine:3.14
