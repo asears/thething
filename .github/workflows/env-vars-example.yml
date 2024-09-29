@@ -5,6 +5,10 @@ on: workflow_dispatch
 jobs:
   echo-input:
     runs-on: ubuntu-latest
+    outputs: 
+      run_id: $GITHUB_RUN_ID
+      step_output: ${{ steps.job_status_msg.outputs.test }}
+      run_next: ${{ steps.job_status_msg.outputs.run_next }}
     steps:
 
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -24,4 +28,20 @@ jobs:
       - run: |
           env >> $GITHUB_STEP_SUMMARY
 
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - id: job_status_msg
+      - run: |
+          echo "🍏 This job's status is ${{ job.status }}."
+          job_status_msg="🍏 This job's status is ${{ job.status }}."
+          run_next=true
+            
+
+      - run: |
+          cat $GITHUB_EVENT_PATH
+
+  deploy:
+    if: contains(needs.echo-input.outputs.run_next, 'true')
+    needs: echo-input
+    runs-on: [ ubuntu-latest ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
