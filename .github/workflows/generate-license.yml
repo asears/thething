@@ -3,6 +3,8 @@ name: generate-license
 on:
   workflow_dispatch:
 
+permissions: {}
+
 jobs:
   gen-license:
     runs-on: ubuntu-latest
