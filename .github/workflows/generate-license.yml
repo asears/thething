@@ -14,4 +14,4 @@ jobs:
         gh extension install mislav/gh-license
         gh license
       env: 
-       gh_token: ${{ secrets.GITHUB_TOKEN }}
+       GH_TOKEN: ${{ github.token }}
