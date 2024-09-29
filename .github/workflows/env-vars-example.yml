@@ -6,6 +6,11 @@ jobs:
   echo-input:
     runs-on: ubuntu-latest
     steps:
+
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+    
       - uses: actions/github-script@v7
         env:
           FIRST_NAME: Mona
@@ -18,3 +23,5 @@ jobs:
 
       - run: |
           env >> $GITHUB_STEP_SUMMARY
+
+      - run: echo "🍏 This job's status is ${{ job.status }}."
