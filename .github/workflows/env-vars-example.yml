@@ -17,5 +17,5 @@ jobs:
             console.log(`Hello ${FIRST_NAME} ${LAST_NAME}`)
 
       - run: |
-          env | tee "$GITHUB_OUTPUT"
+          env >> $GITHUB_OUTPUT
           
