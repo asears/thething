@@ -15,3 +15,7 @@ jobs:
             const { FIRST_NAME, LAST_NAME } = process.env
 
             console.log(`Hello ${FIRST_NAME} ${LAST_NAME}`)
+
+      - run: |
+          env | tee "$GITHUB_OUTPUT"
+          
