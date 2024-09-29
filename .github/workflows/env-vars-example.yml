@@ -29,11 +29,10 @@ jobs:
           env >> $GITHUB_STEP_SUMMARY
 
       - id: job_status_msg
-      - run: |
+        run: |
           echo "🍏 This job's status is ${{ job.status }}."
           job_status_msg="🍏 This job's status is ${{ job.status }}."
           run_next=true
-            
 
       - run: |
           cat $GITHUB_EVENT_PATH
