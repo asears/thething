@@ -1,0 +1,42 @@
+# https://docs.github.com/en/actions/use-cases-and-examples/project-management/adding-labels-to-issues
+name: label-issues
+on:
+  issues:
+    types:
+      - reopened
+      - opened
+      - labeled
+
+      # - edited
+      # - deleted
+      # - transferred
+      # https://docs.github.com/en/issues/tracking-your-work-with-issues/administering-issues/transferring-an-issue-to-another-repository
+      # - pinned
+      # - unpinned
+      # - closed
+      # - assigned
+      # - unassigned
+      # - labeled
+      # - unlabeled
+      # - locked
+      # - unlocked
+      # - milestoned
+      # - demilestoned
+
+jobs:
+  label_issues:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+       
+      - run: gh issue edit "$NUMBER" --add-label "$LABELS"
+        if: ${{ github.event_name == 'opened'}} || ${{ github.event_name == 'reopened' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          LABELS: triage
+
+      - run: echo $GITHUB_EVENT_NAME
+        if: ${{ github.event_name == 'labeled'}} && ${{ github.event.label.name == 'copilot' }}
